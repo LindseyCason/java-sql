@@ -193,6 +193,48 @@ PET TYPE TABLE
 
 
 
+
+BASED ON DATA ABOVE
+PERSON TABLE
+
+| PERSON ID | PERSON NAME | PET TYPE | PET TYPE 2 | PET TYPE 3 | FENCED    | CITY DWELLER |
+|-----------|-------------|----------|------------|------------|-----------|--------------|
+| 1         | JANE        | 1        | 3          | 4          | 2         | 1            |
+| 2         | BOB         | 2        |            |            | 2         | 2            |
+| 3         | SAM         | 1        | 3          | 5          | 1         | 2            |
+
+---
+
+PET TABLE
+
+| PET ID | PERSON ID | PET TYPE | PET NAME   |
+|--------|-----------|----------|------------|
+| 1      | 1         | 1        | ELLIE      |
+@@ -180,14 +183,20 @@ PET TABLE
+| 6      | 3         | 3        | MISS KITTY |
+| 7      | 3         | 5        | BUBBLE     |
+
+---
+
+YARD TABLE
+
+| PERSON ID | FENCED    | CITY DWELLER |
+|-----------|-----------|--------------|
+| 1         | 2         | 1            |
+| 2         | 2         | 2            |
+| 3         | 1         | 2            |
+
+---
+
+
+
+
+
+
+
+
+
+
 ## Stretch Goals
 
 ### delete all customers that have no orders. Should delete 17 (or 18 if you haven't deleted the record added) records.
