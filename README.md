@@ -159,7 +159,7 @@ Take the following data and normalize it into a 3NF database.  You can use the w
 
 
 
-/////
+
 BASED ON DATA ABOVE
 PERSON TABLE
 | PERSON ID | PERSON NAME | PET TYPE | PET TYPE 2 | PET TYPE 3 | FENCED    | CITY DWELLER |
@@ -197,7 +197,7 @@ PET TYPE TABLE
 | 3        | CAT     |
 
 
-/////
+
 ## Stretch Goals
 
 ### delete all customers that have no orders. Should delete 17 (or 18 if you haven't deleted the record added) records.
