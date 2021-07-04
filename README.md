@@ -33,6 +33,58 @@ clone https://github.com/pthom/northwind_psql.git
 Answer the following data queries. Keep track of the SQL you write by pasting it into this document under its appropriate header below. You will be submitting that through the regular fork, change, pull process.
 
 
+<!-- /////// -->
+
+SELECT contact_name  
+FROM customers  
+WHERE city = 'London'
+
+SELECT contact_name  
+FROM customers  
+WHERE postal_code = '1010'
+
+SELECT phone 
+FROM suppliers  
+WHERE supplier_id = '11'
+
+SELECT order_date 
+FROM orders  
+ORDER BY (order_date)DESC
+
+SELECT company_name 
+FROM suppliers  
+WHERE length(company_name) > 20
+
+SELECT contact_title 
+FROM suppliers  
+WHERE UPPER(contact_title) LIKE('%MARKET%')
+
+INSERT INTO customers (customer_id, company_name, contact_name, address, city, postal_code, country)
+values('SHIRE', 'The Shire', 'Bilbo Baggins', '1 Hobbit Hole', 'Bag End', '111', 'Middle Earth')
+
+UPDATE customers
+SET postal_code = '11122'  
+WHERE contact_name = 'Bilbo Baggins'
+
+SELECT COUNT(customer_id), ship_name
+FROM orders
+WHERE ship_name = ('Rattlesnake Canyon Grocery')
+GROUP BY ship_name
+
+SELECT COUNT(customer_id), ship_name
+FROM orders
+GROUP BY ship_name
+ORDER BY COUNT(customer_id)DESC
+
+SELECT COUNT(customer_id), ship_city
+FROM orders
+GROUP BY ship_city
+ORDER BY ship_city
+
+
+<!-- /////// -->
+
+
 ### find all customers that live in London. Returns 6 records.
 > This can be done with SELECT and WHERE clauses
 
@@ -102,7 +154,59 @@ Take the following data and normalize it into a 3NF database.  You can use the w
 | Bob         | Joe      | Horse    |            |            |            |            | No          | No           |
 | Sam         | Ginger   | Dog      | Miss Kitty | Cat        | Bubble     | Fish       | Yes         | No           |
 
+
+BASED ON DATA ABOVE
 ---
+
+PERSON TABLE
+---
+
+| PERSON ID | PERSON NAME | PET TYPE | PET TYPE 2 | PET TYPE 3 | FENCED    | CITY DWELLER |
+|-----------|-------------|----------|------------|------------|-----------|--------------|
+| 1         | JANE        | 1        | 3          | 4          | 2         | 1            |
+| 2         | BOB         | 2        |            |            | 2         | 2            |
+| 3         | SAM         | 1        | 3          | 5          | 1         | 2            |
+
+
+PET TABLE
+---
+
+| PET ID | PERSON ID | PET TYPE | PET NAME   |
+|--------|-----------|----------|------------|
+| 1      | 1         | 1        | ELLIE      |
+| 2      | 2         | 2        | JOE        |
+| 3      | 3         | 1        | GINGER     |
+| 4      | 1         | 3        | TIGER      |
+| 5      | 1         | 4        | TOBY       |
+| 6      | 3         | 3        | MISS KITTY |
+| 7      | 3         | 5        | BUBBLE     |
+
+---
+
+YARD TABLE
+---
+
+| PERSON ID | FENCED    | CITY DWELLER |
+|-----------|-----------|--------------|
+| 1         | 2         | 1            |
+| 2         | 2         | 2            |
+| 3         | 1         | 2            |
+
+---
+
+PET TYPE TABLE
+---
+
+| PET TYPE | SPECIES |
+|----------|---------|
+| 4        | TURTLE  |
+| 5        | FISH    |
+| 1        | DOG     |
+| 2        | HORSE   |
+| 3        | CAT     |
+
+
+
 ## Stretch Goals
 
 ### delete all customers that have no orders. Should delete 17 (or 18 if you haven't deleted the record added) records.
